@@ -163,6 +163,23 @@ app.delete('/api/posts/:id', async (req, res) => {
   }
 });
 
+// Contact Form Endpoint
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, ict } = req.body;
+    console.log('--- NEW CONTACT FORM SUBMISSION ---');
+    console.log('To: projects@revnitymarketing.com');
+    console.log('From:', name, `<${email}>`);
+    console.log('ICT Details:', ict);
+    console.log('------------------------------------');
+    
+    // In a production app, you would use nodemailer here to send the actual email.
+    res.json({ message: 'Thank you! Your message has been sent to projects@revnitymarketing.com' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to send message. Please try again.' });
+  }
+});
+
 // Only bind port in local dev (not on Vercel)
 if (!process.env.VERCEL) {
   const PORT = process.env.PORT || 5000;

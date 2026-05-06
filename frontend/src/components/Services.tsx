@@ -9,81 +9,82 @@ import team from "@/assets/team.jpg";
 import collaboration from "@/assets/collaboration.jpg";
 import boardroom from "@/assets/boardroom.jpg";
 
-const items = [
-  { title: "Hyper-Targeted Customer Profiling", tag: "Precision", img: collaboration, span: "md:col-span-2" },
-  { title: "Cutting-Edge Tech Insights", tag: "AI Powered", img: boardroom, span: "md:col-span-3" },
-  { title: "Technographic Intelligence", tag: "B2B Data", img: phone, span: "md:col-span-3" },
-  { title: "Channel Partner Insights", tag: "Growth", img: team, span: "md:col-span-2" },
-  { title: "Revenue-Driven Marketing", tag: "Strategy", img: meeting, span: "md:col-span-5" },
-];
+import section3 from "@/assets/section3.png";
 
-function TiltCard({ src, title, tag, className = "" }: { src: string; title: string; tag: string; className?: string }) {
-  return (
-    <motion.div
-      whileHover={{ y: -8, rotate: -1 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={`group relative overflow-hidden rounded-3xl shadow-card ${className}`}
-    >
-      <img src={src} alt={title} loading="lazy" className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      <div className="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/10 to-transparent" />
-      <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-        <div>
-          <span className="rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-wider text-white/90 backdrop-blur">
-            {tag}
-          </span>
-          <h3 className="mt-3 text-xl font-semibold text-white">{title}</h3>
-        </div>
-        <span className="grid h-10 w-10 translate-y-2 place-items-center rounded-full bg-primary text-primary-foreground opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
-          ↗
-        </span>
-      </div>
-    </motion.div>
-  );
-}
+const coreServices = [
+  {
+    title: "Technographic Intelligence",
+    desc: "Access in-depth insights on the customer base of over 45,000 technologies, including software, cloud, and hardware solutions, to refine and optimize your targeting strategy.",
+    className: "md:col-span-6"
+  },
+  {
+    title: "Channel Partner Insights",
+    desc: "Empower your channel strategy with in-depth partner profiles tailored to boost recruitment and long-term success.",
+    className: "md:col-span-6"
+  },
+  {
+    title: "Title Based Database",
+    desc: "Identify and engage key decision-makers by segmenting your target audience based on job titles. Increase efficiency, personalize outreach, and accelerate deal velocity.",
+    className: "md:col-span-4"
+  },
+  {
+    title: "Stack Data Append",
+    desc: "Add technology usage information from the list of target accounts or accounts in your CRM to get more insights on the tech stack of your MHAs.",
+    className: "md:col-span-4"
+  },
+  {
+    title: "Industry Database",
+    desc: "Power your pipeline with AI-driven industry segmentation. Our solution maps SIC and NAICS data to deliver accurate vertical insights—so you can prioritize the right markets at the right time.",
+    className: "md:col-span-4"
+  },
+  {
+    title: "Data Appending & Discovery",
+    desc: "Unlock better outreach results by appending updated and right decision-makers information to your existing account data—driving smarter campaigns and deeper market reach.",
+    className: "md:col-span-12"
+  }
+];
 
 export function Services() {
   return (
-    <section id="services" className="relative bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center text-2xl font-bold text-slate-950 sm:text-5xl"
-        >
-          Grow Your Business Fast with{" "}
-          <span className="inline-block rounded-xl bg-deep px-3 py-1 text-primary">
-            Revnity Intelligence
-          </span>{" "}
-          and Services
-        </motion.h2>
+    <section id="service" className="relative bg-white py-20 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 max-w-4xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold leading-tight text-slate-900 sm:text-5xl"
+          >
+            Explore Our Professional{" "}
+            <span className="text-[#004ab0]">Data & Marketing</span> Services
+          </motion.h2>
+          <p className="mt-6 text-lg text-slate-600 max-w-2xl">
+            Empowering growth and strategy teams with data-driven insights for exponential success. 
+            We provide actionable intelligence and innovative solutions to drive impactful decisions.
+          </p>
+        </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-5">
-          {items.map((it, i) => (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+          {coreServices.map((item, i) => (
             <motion.div
-              key={it.title}
-              initial={{ opacity: 0, y: 60 }}
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={it.span}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={`group relative overflow-hidden rounded-[2rem] bg-[#004ab0] p-8 md:p-10 text-white shadow-xl ${item.className}`}
             >
-              <TiltCard src={it.img} title={it.title} tag={it.tag} />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold sm:text-2xl">{item.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-white/80 sm:text-base">
+                  {item.desc}
+                </p>
+              </div>
+              <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-white/5 blur-3xl transition-all group-hover:bg-white/10" />
             </motion.div>
           ))}
         </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mx-auto mt-14 max-w-2xl text-center text-slate-600"
-        >
-          Equip your teams with precision-driven strategies to maximize revenue growth. 
-          Identify the right prospects and boost conversions with high-intent lead insights.
-        </motion.p>
       </div>
     </section>
   );

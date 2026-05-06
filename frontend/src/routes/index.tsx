@@ -1,15 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { Services } from "@/components/Services";
+import { GTMStrategy } from "@/components/GTMStrategy";
 import { Awards } from "@/components/Awards";
 import { Features } from "@/components/Features";
 import { Platform } from "@/components/Platform";
-import { Marquee } from "@/components/Marquee";
 import { Portfolio } from "@/components/Portfolio";
 import { Testimonials } from "@/components/Testimonials";
 
-import { Articles } from "@/components/Articles";
 import { Blog } from "@/components/Blog";
 import { CtaFooter } from "@/components/CtaFooter";
 
@@ -30,16 +28,14 @@ function Index() {
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
       <Hero />
-      <Services />
+      <GTMStrategy />
       <Awards />
       <Features />
       <Platform />
-      <Marquee />
       <Portfolio />
       <Testimonials />
 
       <Blog />
-      <Articles />
       <CtaFooter />
     </main>
   );

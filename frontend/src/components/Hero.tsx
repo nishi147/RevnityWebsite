@@ -1,7 +1,6 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight, Play } from "lucide-react";
-import { useRef } from "react";
-import map from "@/assets/hero-map.png";
+import heroImage from "@/assets/Heroimage.png";
 
 const word = {
   hidden: { y: "120%", opacity: 0 },
@@ -13,90 +12,77 @@ const word = {
 };
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  const headline = ["Marketing", "Edge", "With", "Data"];
+  const headline = ["Technographic", "Intent", "Insights"];
 
   return (
-    <section id="home" ref={ref} className="relative min-h-[100svh] overflow-hidden bg-hero pt-24 pb-16 lg:pt-32 lg:pb-24">
-      {/* map image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
-        className="pointer-events-none absolute top-[58%] left-0 w-full px-4 opacity-40 lg:top-1/2 lg:right-0 lg:left-auto lg:w-1/2 lg:px-0 lg:-translate-y-1/2 lg:opacity-88"
-        style={{
-          filter: "blur(0.8px)",
-          mixBlendMode: "screen",
-          maskImage: "radial-gradient(circle at center, black 40%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 80%)"
-        }}
-      >
-        <img src={map} alt="Map" className="w-full h-auto object-contain" />
-      </motion.div>
+    <section id="home" className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-24 pb-12 sm:pb-16">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={heroImage} 
+          alt="Revnity Hero" 
+          className="h-full w-full object-cover object-center"
+        />
+      </div>
 
-
-
-      <motion.div style={{ opacity }} className="relative mx-auto max-w-6xl px-6">
-        <motion.span
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.2em] text-muted-foreground"
-        >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-          Welcome to Revnity
-        </motion.span>
-
-        <h1 className="mt-4 flex max-w-4xl flex-wrap gap-y-2 text-[2.75rem] font-bold leading-[1.1] tracking-tight sm:text-7xl md:text-8xl">
-          <span className="w-full">Power Up Your</span>
-          {headline.map((w, i) => (
-            <span key={w + i} className="mr-3 inline-block align-bottom sm:mr-4">
-              <motion.span variants={word} initial="hidden" animate="show" custom={i} className="inline-block">
-                {i === 1 ? <span className="text-shimmer">{w}</span> : w}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
+      {/* Content Overlay */}
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 flex flex-col items-start text-left">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="mt-4 max-w-2xl text-sm text-muted-foreground sm:text-lg"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+          className="text-xl sm:text-3xl md:text-4xl font-bold text-white uppercase tracking-tight"
         >
-          Unlock growth with a data-driven approach to technology marketing. Access 35,000+ vendors 
-          and products to enhance your sales and marketing strategies and identify your total addressable market.
+          Scale Your Go-To-Market Strategy with
         </motion.p>
+
+        <h1 
+          style={{ fontFamily: "'Caveat', cursive" }}
+          className="mt-2 flex flex-col font-bold leading-[0.9] tracking-tight text-white text-5xl xs:text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[11rem]"
+        >
+          <div className="flex flex-wrap gap-x-3 gap-y-1 sm:gap-x-5 sm:gap-y-2">
+            {headline.map((w, i) => (
+              <span key={w + i} className="inline-block align-bottom">
+                <motion.span variants={word} initial="hidden" animate="show" custom={i} className="inline-block">
+                  {i === 1 ? <span className="text-shimmer">{w}</span> : w}
+                </motion.span>
+              </span>
+            ))}
+          </div>
+        </h1>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.05, duration: 0.7 }}
-          className="mt-8 flex flex-wrap items-center gap-4 sm:gap-5"
+          className="mt-8 sm:mt-12 flex flex-row items-center gap-4 sm:gap-8"
         >
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-lime-grad px-6 py-3 text-sm font-semibold text-lime-foreground shadow-glow"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-lime-grad px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-lime-foreground shadow-glow"
           >
-            Get Free Sample
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            Subscribe →
           </motion.a>
-          <a href="#platform" className="group inline-flex items-center gap-3">
-            <span className="relative grid h-12 w-12 place-items-center rounded-full bg-foreground/95 text-background">
-              <span className="absolute inset-0 animate-ping rounded-full bg-foreground/30" />
-              <Play className="relative h-4 w-4 fill-current" />
+          <a href="#platform" className="group flex items-center gap-3 text-white">
+            <span className="relative grid h-10 w-10 sm:h-12 sm:w-12 place-items-center rounded-full bg-white/10 border border-white/20 text-white transition-all group-hover:bg-white/20">
+              <Play className="relative h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />
             </span>
-            <span className="text-sm font-medium">How it Works</span>
+            <span className="text-sm sm:text-base font-medium">How it Work</span>
           </a>
         </motion.div>
-      </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.3, duration: 0.8 }}
+          className="mt-10 sm:mt-12 max-w-2xl text-sm sm:text-lg lg:text-xl font-medium leading-relaxed text-white/90"
+        >
+          Target high-fit accounts and uncover competitor displacement opportunities with verified intelligence across 35,000+ global vendors. Scale your GTM efficiency and define your market using actionable, data-driven technographic insights.
+        </motion.p>
+      </div>
     </section>
   );
 }
