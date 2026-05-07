@@ -100,7 +100,7 @@ function AdminLogin() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-8">
-          &copy; 2026 Revnity Marketing Agency. All rights reserved.
+          &copy; 2025 Revnity Marketing Agency. All rights reserved.
         </p>
       </motion.div>
     </div>

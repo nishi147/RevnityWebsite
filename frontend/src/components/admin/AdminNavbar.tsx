@@ -104,7 +104,7 @@ export function AdminNavbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="lg:hidden fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm"
+              className="lg:hidden fixed inset-0 z-[70] bg-background/60 backdrop-blur-sm"
             />
             <motion.nav 
               initial={{ x: "-100%" }}

@@ -35,9 +35,49 @@ const industryItems = [
 ];
 
 export function Portfolio() {
+  const cardVariants = {
+    initial: { backgroundColor: "rgb(248, 250, 252)" },
+    active: { backgroundColor: "#ffffff" }
+  };
+
+  const iconVariants = {
+    initial: { backgroundColor: "#ffffff", color: "#004ab0" },
+    active: { backgroundColor: "#c0ff33", color: "#004ab0" }
+  };
+
+  const titleVariants = {
+    initial: { color: "rgb(15, 23, 42)" },
+    active: { color: "#004ab0" }
+  };
+
   return (
-    <section id="portfolio" className="py-24 px-6 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="portfolio" className="relative py-24 px-6 sm:px-12 bg-white overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ 
+            x: [0, 70, 0], 
+            y: [0, -50, 0],
+            scale: [1, 1.25, 1] 
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute left-0 bottom-0 h-[300px] sm:h-[550px] w-[300px] sm:w-[550px] rounded-full bg-[#c0ff33]/5 blur-[80px] sm:blur-[120px]" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, -90, 0], 
+            y: [0, 60, 0],
+            scale: [1, 1.15, 1] 
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute right-10 top-20 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-[#004ab0]/5 blur-[90px] sm:blur-[130px]" 
+        />
+        
+        {/* Animated Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.015] [background-image:linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] [background-size:70px_70px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="mb-16 space-y-4">
           <motion.div
@@ -52,7 +92,7 @@ export function Portfolio() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-6xl font-bold text-slate-950 leading-tight"
           >
@@ -62,24 +102,32 @@ export function Portfolio() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {industryItems.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial="initial"
+              whileHover="active"
+              whileTap="active"
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5 }}
-              className="group relative p-8 rounded-[2rem] bg-slate-50 border border-slate-100 transition-all duration-300 hover:bg-white hover:shadow-xl"
+              variants={cardVariants}
+              className="group relative p-8 rounded-[2rem] border border-slate-100 transition-all duration-300 hover:shadow-xl cursor-pointer"
             >
               <div className="relative z-10">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#004ab0] shadow-sm group-hover:bg-[#c0ff33] group-hover:shadow-[0_8px_20px_rgba(192,255,51,0.3)] transition-all duration-500">
+                <motion.div 
+                  variants={iconVariants}
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm transition-all duration-500"
+                >
                   <item.icon className="h-7 w-7" />
-                </div>
-                <h3 className="mt-8 text-xl font-bold text-slate-900 group-hover:text-[#004ab0] transition-colors">
+                </motion.div>
+                <motion.h3 
+                  variants={titleVariants}
+                  className="mt-8 text-xl font-bold transition-colors duration-500"
+                >
                   {item.title}
-                </h3>
+                </motion.h3>
                 <p className="mt-4 text-sm leading-relaxed text-slate-500">
                   {item.desc}
                 </p>

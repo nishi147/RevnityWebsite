@@ -349,7 +349,7 @@ export function BlogForm({ initialData, onSave }: BlogFormProps) {
               {formData.img ? (
                 <>
                   <img src={formData.img} alt="Preview" className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                  <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                     <p className="text-[10px] text-white">Click Upload to Change</p>
                   </div>
                 </>
@@ -360,7 +360,7 @@ export function BlogForm({ initialData, onSave }: BlogFormProps) {
                 </div>
               )}
               {isUploading && (
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
                   <Loader2 className="h-6 w-6 text-primary animate-spin" />
                 </div>
               )}

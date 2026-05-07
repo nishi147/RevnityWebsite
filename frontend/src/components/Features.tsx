@@ -35,46 +35,120 @@ const features = [
 ];
 
 export function Features() {
+  const cardVariants = {
+    initial: { backgroundColor: "#ffffff" },
+    active: { backgroundColor: "rgba(192, 255, 51, 0.05)" }
+  };
+
+  const iconVariants = {
+    initial: { backgroundColor: "rgb(248, 250, 252)", color: "rgb(148, 163, 184)", rotate: 0 },
+    active: { backgroundColor: "#c0ff33", color: "#000", rotate: 10 }
+  };
+
+  const titleVariants = {
+    initial: { color: "rgb(2, 6, 23)" },
+    active: { color: "#004ab0" }
+  };
+
+  const lineVariants = {
+    initial: { width: "0%" },
+    active: { width: "100%" }
+  };
+
   return (
-    <section id="features" className="bg-slate-50 py-20 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 max-w-3xl">
+    <section id="features" className="relative bg-white py-24 sm:py-32 overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ 
+            x: [0, 100, 0], 
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1] 
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -left-20 top-0 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-[#c0ff33]/5 blur-[80px] sm:blur-[120px]" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, -80, 0], 
+            y: [0, 100, 0],
+            scale: [1, 1.3, 1] 
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute -right-20 bottom-0 h-[350px] sm:h-[600px] w-[350px] sm:w-[600px] rounded-full bg-[#004ab0]/5 blur-[100px] sm:blur-[140px]" 
+        />
+        
+        {/* Animated Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] [background-size:60px_60px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-12">
+        <div className="mb-20 max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 rounded-full bg-[#c0ff33]/10 px-4 py-1.5 text-sm font-black text-[#c0ff33] mb-6 border border-[#c0ff33]/20"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c0ff33] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c0ff33]"></span>
+            </span>
+            Core Expertise
+          </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold leading-tight text-slate-900 sm:text-5xl"
+            className="text-4xl font-black leading-tight text-slate-950 sm:text-6xl uppercase tracking-tighter"
           >
-            Explore Our Professional <span className="text-primary">Data & Marketing</span> Services
+            Explore Our Professional <br />
+            <span className="text-[#004ab0] italic">Data & Marketing</span> Services
           </motion.h2>
-          <p className="mt-6 text-lg text-slate-600">
-            Empowering growth and strategy teams with data-driven insights for exponential success.
+          <p className="mt-8 text-xl text-slate-600 font-medium leading-relaxed">
+            Empowering growth and strategy teams with precision-engineered data insights for exponential market success.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial="initial"
+              whileHover="active"
+              whileTap="active"
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300"
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              variants={cardVariants}
+              className="group relative overflow-hidden rounded-[3rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer"
             >
-              {/* Subtle background gradient */}
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-colors" />
+              {/* Individual Card Background Glow */}
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#c0ff33]/0 blur-3xl group-hover:bg-[#c0ff33]/10 transition-all duration-500" />
               
               <div className="relative z-10">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                  <f.icon className="h-7 w-7" />
-                </div>
-                <h3 className="mt-8 text-xl font-bold text-slate-900 sm:text-2xl">{f.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-slate-500 sm:text-base">
+                <motion.div 
+                  variants={iconVariants}
+                  className="flex h-16 w-16 items-center justify-center rounded-[1.5rem] shadow-sm transition-all duration-500"
+                >
+                  <f.icon className="h-8 w-8" />
+                </motion.div>
+                <motion.h3 
+                  variants={titleVariants}
+                  className="mt-10 text-2xl font-black tracking-tight transition-all duration-500"
+                >
+                  {f.title}
+                </motion.h3>
+                <p className="mt-5 text-base leading-relaxed text-slate-500 font-medium">
                   {f.desc}
                 </p>
+                
+                <motion.div 
+                  variants={lineVariants}
+                  className="mt-8 h-1 bg-[#c0ff33] transition-all duration-500" 
+                />
               </div>
             </motion.div>
           ))}

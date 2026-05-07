@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Target, Globe, TrendingUp, BarChart3 } from "lucide-react";
-import section3 from "@/assets/section3.png";
+import section2 from "@/assets/section2.png";
 
 export function Platform() {
   return (
@@ -8,7 +8,7 @@ export function Platform() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={section3} 
+          src={section2} 
           alt="Section Background" 
           className="h-full w-full object-cover object-center"
         />

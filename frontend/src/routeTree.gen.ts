@@ -9,23 +9,57 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyRevnityRouteImport } from './routes/why-revnity'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as DataCollectionMethodologyRouteImport } from './routes/data-collection-methodology'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as ServicesTitleBasedDatabaseRouteImport } from './routes/services.title-based-database'
+import { Route as ServicesTechnographicIntelligenceRouteImport } from './routes/services.technographic-intelligence'
+import { Route as ServicesStackDataAppendRouteImport } from './routes/services.stack-data-append'
+import { Route as ServicesIndustryDatabaseRouteImport } from './routes/services.industry-database'
+import { Route as ServicesDataAppendingAndDiscoveryRouteImport } from './routes/services.data-appending-and-discovery'
+import { Route as ServicesChannelPartnerInsightsRouteImport } from './routes/services.channel-partner-insights'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminNewRouteImport } from './routes/admin/new'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminEditIdRouteImport } from './routes/admin/edit.$id'
 
+const WhyRevnityRoute = WhyRevnityRouteImport.update({
+  id: '/why-revnity',
+  path: '/why-revnity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataCollectionMethodologyRoute =
+  DataCollectionMethodologyRouteImport.update({
+    id: '/data-collection-methodology',
+    path: '/data-collection-methodology',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -41,16 +75,66 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const ServicesTitleBasedDatabaseRoute =
+  ServicesTitleBasedDatabaseRouteImport.update({
+    id: '/title-based-database',
+    path: '/title-based-database',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesTechnographicIntelligenceRoute =
+  ServicesTechnographicIntelligenceRouteImport.update({
+    id: '/technographic-intelligence',
+    path: '/technographic-intelligence',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesStackDataAppendRoute = ServicesStackDataAppendRouteImport.update({
+  id: '/stack-data-append',
+  path: '/stack-data-append',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesIndustryDatabaseRoute =
+  ServicesIndustryDatabaseRouteImport.update({
+    id: '/industry-database',
+    path: '/industry-database',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesDataAppendingAndDiscoveryRoute =
+  ServicesDataAppendingAndDiscoveryRouteImport.update({
+    id: '/data-appending-and-discovery',
+    path: '/data-appending-and-discovery',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesChannelPartnerInsightsRoute =
+  ServicesChannelPartnerInsightsRouteImport.update({
+    id: '/channel-partner-insights',
+    path: '/channel-partner-insights',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -79,99 +163,206 @@ const AdminEditIdRoute = AdminEditIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/data-collection-methodology': typeof DataCollectionMethodologyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/why-revnity': typeof WhyRevnityRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/new': typeof AdminNewRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/services/channel-partner-insights': typeof ServicesChannelPartnerInsightsRoute
+  '/services/data-appending-and-discovery': typeof ServicesDataAppendingAndDiscoveryRoute
+  '/services/industry-database': typeof ServicesIndustryDatabaseRoute
+  '/services/stack-data-append': typeof ServicesStackDataAppendRoute
+  '/services/technographic-intelligence': typeof ServicesTechnographicIntelligenceRoute
+  '/services/title-based-database': typeof ServicesTitleBasedDatabaseRoute
   '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
+  '/services/': typeof ServicesIndexRoute
   '/admin/edit/$id': typeof AdminEditIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRouteWithChildren
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/data-collection-methodology': typeof DataCollectionMethodologyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/why-revnity': typeof WhyRevnityRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/new': typeof AdminNewRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/services/channel-partner-insights': typeof ServicesChannelPartnerInsightsRoute
+  '/services/data-appending-and-discovery': typeof ServicesDataAppendingAndDiscoveryRoute
+  '/services/industry-database': typeof ServicesIndustryDatabaseRoute
+  '/services/stack-data-append': typeof ServicesStackDataAppendRoute
+  '/services/technographic-intelligence': typeof ServicesTechnographicIntelligenceRoute
+  '/services/title-based-database': typeof ServicesTitleBasedDatabaseRoute
   '/admin': typeof AdminIndexRoute
+  '/blog': typeof BlogIndexRoute
+  '/services': typeof ServicesIndexRoute
   '/admin/edit/$id': typeof AdminEditIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/data-collection-methodology': typeof DataCollectionMethodologyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/why-revnity': typeof WhyRevnityRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/new': typeof AdminNewRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/services/channel-partner-insights': typeof ServicesChannelPartnerInsightsRoute
+  '/services/data-appending-and-discovery': typeof ServicesDataAppendingAndDiscoveryRoute
+  '/services/industry-database': typeof ServicesIndustryDatabaseRoute
+  '/services/stack-data-append': typeof ServicesStackDataAppendRoute
+  '/services/technographic-intelligence': typeof ServicesTechnographicIntelligenceRoute
+  '/services/title-based-database': typeof ServicesTitleBasedDatabaseRoute
   '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
+  '/services/': typeof ServicesIndexRoute
   '/admin/edit/$id': typeof AdminEditIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/admin'
     | '/blog'
     | '/contact'
+    | '/data-collection-methodology'
+    | '/privacy-policy'
+    | '/refund-policy'
     | '/services'
+    | '/why-revnity'
     | '/admin/login'
     | '/admin/new'
     | '/admin/settings'
     | '/blog/$slug'
+    | '/services/channel-partner-insights'
+    | '/services/data-appending-and-discovery'
+    | '/services/industry-database'
+    | '/services/stack-data-append'
+    | '/services/technographic-intelligence'
+    | '/services/title-based-database'
     | '/admin/'
+    | '/blog/'
+    | '/services/'
     | '/admin/edit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/blog'
+    | '/about'
     | '/contact'
-    | '/services'
+    | '/data-collection-methodology'
+    | '/privacy-policy'
+    | '/refund-policy'
+    | '/why-revnity'
     | '/admin/login'
     | '/admin/new'
     | '/admin/settings'
     | '/blog/$slug'
+    | '/services/channel-partner-insights'
+    | '/services/data-appending-and-discovery'
+    | '/services/industry-database'
+    | '/services/stack-data-append'
+    | '/services/technographic-intelligence'
+    | '/services/title-based-database'
     | '/admin'
+    | '/blog'
+    | '/services'
     | '/admin/edit/$id'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin'
     | '/blog'
     | '/contact'
+    | '/data-collection-methodology'
+    | '/privacy-policy'
+    | '/refund-policy'
     | '/services'
+    | '/why-revnity'
     | '/admin/login'
     | '/admin/new'
     | '/admin/settings'
     | '/blog/$slug'
+    | '/services/channel-partner-insights'
+    | '/services/data-appending-and-discovery'
+    | '/services/industry-database'
+    | '/services/stack-data-append'
+    | '/services/technographic-intelligence'
+    | '/services/title-based-database'
     | '/admin/'
+    | '/blog/'
+    | '/services/'
     | '/admin/edit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
   BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  DataCollectionMethodologyRoute: typeof DataCollectionMethodologyRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
+  WhyRevnityRoute: typeof WhyRevnityRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why-revnity': {
+      id: '/why-revnity'
+      path: '/why-revnity'
+      fullPath: '/why-revnity'
+      preLoaderRoute: typeof WhyRevnityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-collection-methodology': {
+      id: '/data-collection-methodology'
+      path: '/data-collection-methodology'
+      fullPath: '/data-collection-methodology'
+      preLoaderRoute: typeof DataCollectionMethodologyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -195,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -202,12 +400,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/admin/': {
       id: '/admin/'
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/services/title-based-database': {
+      id: '/services/title-based-database'
+      path: '/title-based-database'
+      fullPath: '/services/title-based-database'
+      preLoaderRoute: typeof ServicesTitleBasedDatabaseRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/technographic-intelligence': {
+      id: '/services/technographic-intelligence'
+      path: '/technographic-intelligence'
+      fullPath: '/services/technographic-intelligence'
+      preLoaderRoute: typeof ServicesTechnographicIntelligenceRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/stack-data-append': {
+      id: '/services/stack-data-append'
+      path: '/stack-data-append'
+      fullPath: '/services/stack-data-append'
+      preLoaderRoute: typeof ServicesStackDataAppendRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/industry-database': {
+      id: '/services/industry-database'
+      path: '/industry-database'
+      fullPath: '/services/industry-database'
+      preLoaderRoute: typeof ServicesIndustryDatabaseRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/data-appending-and-discovery': {
+      id: '/services/data-appending-and-discovery'
+      path: '/data-appending-and-discovery'
+      fullPath: '/services/data-appending-and-discovery'
+      preLoaderRoute: typeof ServicesDataAppendingAndDiscoveryRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/channel-partner-insights': {
+      id: '/services/channel-partner-insights'
+      path: '/channel-partner-insights'
+      fullPath: '/services/channel-partner-insights'
+      preLoaderRoute: typeof ServicesChannelPartnerInsightsRouteImport
+      parentRoute: typeof ServicesRoute
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -267,20 +521,53 @@ const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
+interface ServicesRouteChildren {
+  ServicesChannelPartnerInsightsRoute: typeof ServicesChannelPartnerInsightsRoute
+  ServicesDataAppendingAndDiscoveryRoute: typeof ServicesDataAppendingAndDiscoveryRoute
+  ServicesIndustryDatabaseRoute: typeof ServicesIndustryDatabaseRoute
+  ServicesStackDataAppendRoute: typeof ServicesStackDataAppendRoute
+  ServicesTechnographicIntelligenceRoute: typeof ServicesTechnographicIntelligenceRoute
+  ServicesTitleBasedDatabaseRoute: typeof ServicesTitleBasedDatabaseRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesChannelPartnerInsightsRoute: ServicesChannelPartnerInsightsRoute,
+  ServicesDataAppendingAndDiscoveryRoute:
+    ServicesDataAppendingAndDiscoveryRoute,
+  ServicesIndustryDatabaseRoute: ServicesIndustryDatabaseRoute,
+  ServicesStackDataAppendRoute: ServicesStackDataAppendRoute,
+  ServicesTechnographicIntelligenceRoute:
+    ServicesTechnographicIntelligenceRoute,
+  ServicesTitleBasedDatabaseRoute: ServicesTitleBasedDatabaseRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
   BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  DataCollectionMethodologyRoute: DataCollectionMethodologyRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
+  ServicesRoute: ServicesRouteWithChildren,
+  WhyRevnityRoute: WhyRevnityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

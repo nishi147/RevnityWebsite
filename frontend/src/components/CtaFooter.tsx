@@ -50,7 +50,7 @@ export function CtaFooter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-[3rem] bg-slate-950 px-8 py-12 text-center shadow-2xl md:px-16 md:py-16"
+          className="relative overflow-hidden rounded-[3rem] bg-background px-8 py-12 text-center shadow-2xl md:px-16 md:py-16"
         >
           {/* Animated Background Orbs */}
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-indigo-600/20 blur-[100px] animate-pulse" />
@@ -130,7 +130,7 @@ export function CtaFooter() {
       </section>
 
       {/* Main Footer Section */}
-      <div className="bg-[#0a0a0b] text-white py-20 px-6">
+      <div className="bg-background text-white py-20 px-6">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {/* Logo and Info */}
@@ -227,24 +227,6 @@ export function CtaFooter() {
           </div>
 
           <div className="mt-20 pt-10 border-t border-white/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12">
-            {/* Newsletter (Kept as existing) */}
-            <div className="max-w-md w-full">
-              <h4 className="text-lg font-bold mb-2">Join our newsletter</h4>
-              <p className="text-sm text-white/30 mb-6">No ads. No trails. No commitments</p>
-              <form className="flex gap-2">
-                <input 
-                  type="email" 
-                  placeholder="Email Address" 
-                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-3 text-sm focus:outline-none focus:border-[#c0ff33] transition-colors"
-                />
-                <button 
-                  type="submit"
-                  className="bg-[#c0ff33] text-slate-950 px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-opacity"
-                >
-                  Subscribe <ArrowUpRight size={16} />
-                </button>
-              </form>
-            </div>
 
             <div className="flex gap-8 items-center">
               <div className="flex gap-4">
@@ -267,7 +249,7 @@ export function CtaFooter() {
           </div>
 
           <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-white/20 uppercase tracking-widest">
-            <p>© 2026 Revnity Marketing. All rights reserved.</p>
+            <p>© 2025 Revnity Marketing. All rights reserved.</p>
             <button 
               onClick={scrollToTop}
               className="grid h-12 w-12 place-items-center rounded-full bg-white/5 hover:bg-[#c0ff33] hover:text-slate-950 transition-all"

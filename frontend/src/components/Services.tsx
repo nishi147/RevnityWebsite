@@ -9,8 +9,6 @@ import team from "@/assets/team.jpg";
 import collaboration from "@/assets/collaboration.jpg";
 import boardroom from "@/assets/boardroom.jpg";
 
-import section3 from "@/assets/section3.png";
-
 const coreServices = [
   {
     title: "Technographic Intelligence",

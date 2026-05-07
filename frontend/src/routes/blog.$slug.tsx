@@ -16,14 +16,22 @@ function BlogPostPage() {
   const { slug } = Route.useParams();
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPost = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const data = await blogApi.getPostBySlug(slug);
-        setPost(data);
-      } catch (error) {
-        console.error("Failed to fetch post:", error);
+        if (data) {
+          setPost(data);
+        } else {
+          setError("Post not found");
+        }
+      } catch (err: any) {
+        console.error("Failed to fetch post:", err);
+        setError(err.message || "Failed to load article");
       } finally {
         setLoading(false);
       }
@@ -34,19 +42,34 @@ function BlogPostPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#c0ff33] border-t-transparent" />
       </div>
     );
   }
 
-  if (!post) {
+  if (error || !post) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background p-6 text-center">
-        <h1 className="text-4xl font-bold">Post Not Found</h1>
-        <p className="mt-4 text-muted-foreground">The article you're looking for doesn't exist.</p>
-        <Link to="/" className="mt-8 rounded-full bg-primary px-8 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
-          Back to Home
-        </Link>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-md"
+        >
+          <h1 className="text-5xl font-black text-white uppercase tracking-tighter mb-4">
+            Post <span className="text-[#c0ff33]">Not Found</span>
+          </h1>
+          <p className="text-white/60 mb-8 text-lg">
+            {error === "Post not found" 
+              ? "The article you're looking for doesn't exist or has been moved." 
+              : "There was a problem connecting to our insights database."}
+          </p>
+          <Link 
+            to="/blog" 
+            className="rounded-full bg-[#c0ff33] px-8 py-4 font-bold text-black transition hover:shadow-[0_0_30px_rgba(192,255,51,0.4)]"
+          >
+            Explore Other Articles
+          </Link>
+        </motion.div>
       </div>
     );
   }
@@ -61,7 +84,7 @@ function BlogPostPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link to="/" className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition">
+          <Link to="/blog" className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition">
             <ChevronLeft className="h-4 w-4" /> Back to blog
           </Link>
 

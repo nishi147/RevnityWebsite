@@ -42,16 +42,37 @@ const gtmItems = [
 export function GTMStrategy() {
   return (
     <section id="gtm" className="relative overflow-hidden bg-white py-24 sm:py-32">
-      {/* Background Soft Glows */}
-      <div className="absolute left-1/4 top-0 -z-10 h-96 w-96 rounded-full bg-lime-400/20 blur-[120px]" />
-      <div className="absolute right-1/4 bottom-0 -z-10 h-96 w-96 rounded-full bg-blue-400/10 blur-[120px]" />
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ 
+            x: [0, -100, 0], 
+            y: [0, 80, 0],
+            scale: [1, 1.4, 1] 
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          className="absolute right-0 top-0 h-[300px] sm:h-[600px] w-[300px] sm:w-[600px] rounded-full bg-[#004ab0]/5 blur-[80px] sm:blur-[130px]" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, 60, 0], 
+            y: [0, -40, 0],
+            scale: [1, 1.2, 1] 
+          }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          className="absolute left-10 bottom-20 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-[#c0ff33]/5 blur-[80px] sm:blur-[110px]" 
+        />
+        
+        {/* Animated Grid Overlay */}
+        <div className="absolute inset-0 opacity-[0.02] [background-image:linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] [background-size:80px_80px]" />
+      </div>
 
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 max-w-4xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
             className="text-4xl font-bold leading-[1.1] text-slate-950 sm:text-6xl"
           >
@@ -70,9 +91,10 @@ export function GTMStrategy() {
               key={item.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               whileHover={{ y: -8 }}
+              whileTap={{ scale: 0.98, y: -4 }}
               className={`group relative overflow-hidden rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-500 ${item.className}`}
             >
               {/* Subtle Gradient Accent */}
@@ -91,10 +113,6 @@ export function GTMStrategy() {
                   {item.desc}
                 </p>
 
-                <div className="mt-8 flex items-center gap-2 text-sm font-bold text-[#004ab0] transition-transform group-hover:translate-x-2">
-                  <span>Explore approach</span>
-                  <ArrowRight className="h-4 w-4" />
-                </div>
               </div>
 
               {/* Decorative corner accent */}

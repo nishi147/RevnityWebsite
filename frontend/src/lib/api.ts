@@ -1,10 +1,22 @@
 const API_URL = import.meta.env.VITE_API_URL || '/api';
 
+const handleResponse = async (res: Response) => {
+  const contentType = res.headers.get("content-type");
+  if (contentType && contentType.includes("application/json")) {
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'API Error');
+    return data;
+  } else {
+    const text = await res.text();
+    if (!res.ok) throw new Error(`Server Error (${res.status}): ${text.slice(0, 100)}`);
+    return text;
+  }
+};
+
 export const blogApi = {
   getPosts: async () => {
     const res = await fetch(`${API_URL}/posts`);
-    if (!res.ok) throw new Error('Failed to fetch posts');
-    const data = await res.json();
+    const data = await handleResponse(res);
     return data.map((p: any) => ({ ...p, id: p._id }));
   },
 
@@ -14,8 +26,7 @@ export const blogApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post),
     });
-    if (!res.ok) throw new Error('Failed to create post');
-    const data = await res.json();
+    const data = await handleResponse(res);
     return { ...data, id: data._id };
   },
 
@@ -23,21 +34,19 @@ export const blogApi = {
     const res = await fetch(`${API_URL}/posts/${id}`, {
       method: 'DELETE',
     });
-    if (!res.ok) throw new Error('Failed to delete post');
+    await handleResponse(res);
     return true;
   },
 
   getPostById: async (id: string) => {
     const res = await fetch(`${API_URL}/posts/${id}`);
-    if (!res.ok) throw new Error('Failed to fetch post');
-    const data = await res.json();
+    const data = await handleResponse(res);
     return { ...data, id: data._id };
   },
 
   getPostBySlug: async (slug: string) => {
     const res = await fetch(`${API_URL}/posts/slug/${slug}`);
-    if (!res.ok) throw new Error('Failed to fetch post');
-    const data = await res.json();
+    const data = await handleResponse(res);
     return { ...data, id: data._id };
   },
 
@@ -47,8 +56,7 @@ export const blogApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(post),
     });
-    if (!res.ok) throw new Error('Failed to update post');
-    const data = await res.json();
+    const data = await handleResponse(res);
     return { ...data, id: data._id };
   },
   
@@ -61,7 +69,6 @@ export const blogApi = {
       body: formData,
     });
     
-    if (!res.ok) throw new Error('Failed to upload image');
-    return await res.json();
+    return await handleResponse(res);
   }
 };

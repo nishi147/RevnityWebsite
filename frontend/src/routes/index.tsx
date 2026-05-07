@@ -6,8 +6,7 @@ import { Awards } from "@/components/Awards";
 import { Features } from "@/components/Features";
 import { Platform } from "@/components/Platform";
 import { Portfolio } from "@/components/Portfolio";
-import { Testimonials } from "@/components/Testimonials";
-
+import { MarketIntelligence } from "@/components/MarketIntelligence";
 import { Blog } from "@/components/Blog";
 import { CtaFooter } from "@/components/CtaFooter";
 
@@ -28,12 +27,12 @@ function Index() {
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
       <Hero />
-      <GTMStrategy />
-      <Awards />
       <Features />
+      <Awards />
+      <GTMStrategy />
       <Platform />
       <Portfolio />
-      <Testimonials />
+      <MarketIntelligence />
 
       <Blog />
       <CtaFooter />
