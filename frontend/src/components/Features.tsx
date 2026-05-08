@@ -56,7 +56,7 @@ export function Features() {
   };
 
   return (
-    <section id="features" className="relative bg-white py-24 sm:py-32 overflow-hidden">
+    <section id="features" className="relative bg-white py-8 sm:py-10 overflow-hidden">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div 
@@ -83,16 +83,16 @@ export function Features() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-12">
-        <div className="mb-20 max-w-3xl">
+        <div className="mb-6 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full bg-[#c0ff33]/10 px-4 py-1.5 text-sm font-black text-[#c0ff33] mb-6 border border-[#c0ff33]/20"
+            className="inline-flex items-center gap-2 rounded-full bg-[#004ab0]/10 px-4 py-1.5 text-xs font-black text-[#004ab0] mb-3 border border-[#004ab0]/20"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c0ff33] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c0ff33]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#004ab0] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#004ab0]"></span>
             </span>
             Core Expertise
           </motion.div>
@@ -102,17 +102,17 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-black leading-tight text-slate-950 sm:text-6xl uppercase tracking-tighter"
+            className="text-2xl md:text-4xl font-black leading-tight text-slate-950 uppercase tracking-tighter"
           >
             Explore Our Professional <br />
             <span className="text-[#004ab0] italic">Data & Marketing</span> Services
           </motion.h2>
-          <p className="mt-8 text-xl text-slate-600 font-medium leading-relaxed">
+          <p className="mt-2 text-base text-slate-600 font-medium leading-relaxed">
             Empowering growth and strategy teams with precision-engineered data insights for exponential market success.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex overflow-x-auto gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 pb-4 snap-x snap-mandatory">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
@@ -121,33 +121,33 @@ export function Features() {
               whileTap="active"
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7, delay: i * 0.1 }}
+              transition={{ duration: 0.7 }}
               variants={cardVariants}
-              className="group relative overflow-hidden rounded-[3rem] p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer"
+              className="group relative overflow-hidden rounded-[1.5rem] p-4 md:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer flex-shrink-0 w-[85vw] md:w-auto snap-center"
             >
               {/* Individual Card Background Glow */}
-              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#c0ff33]/0 blur-3xl group-hover:bg-[#c0ff33]/10 transition-all duration-500" />
+              <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#c0ff33]/0 blur-3xl group-hover:bg-[#c0ff33]/10 transition-all duration-500" />
               
               <div className="relative z-10">
                 <motion.div 
                   variants={iconVariants}
-                  className="flex h-16 w-16 items-center justify-center rounded-[1.5rem] shadow-sm transition-all duration-500"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl shadow-sm transition-all duration-500"
                 >
-                  <f.icon className="h-8 w-8" />
+                  <f.icon className="h-5 w-5" />
                 </motion.div>
                 <motion.h3 
                   variants={titleVariants}
-                  className="mt-10 text-2xl font-black tracking-tight transition-all duration-500"
+                  className="mt-4 text-lg font-bold tracking-tight transition-all duration-500"
                 >
                   {f.title}
                 </motion.h3>
-                <p className="mt-5 text-base leading-relaxed text-slate-500 font-medium">
+                <p className="mt-2 text-sm leading-relaxed text-slate-500 font-medium">
                   {f.desc}
                 </p>
                 
                 <motion.div 
                   variants={lineVariants}
-                  className="mt-8 h-1 bg-[#c0ff33] transition-all duration-500" 
+                  className="mt-4 h-0.5 bg-[#c0ff33] transition-all duration-500" 
                 />
               </div>
             </motion.div>

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Menu, Search, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, Search, X, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import logoImg from "@/assets/Revnity Marketing.png";
@@ -14,7 +14,7 @@ export function Navbar() {
   const headerBg = useTransform(
     scrollY,
     [0, 50],
-    isHome ? ["rgba(0, 26, 61, 0)", "rgba(0, 26, 61, 0.95)"] : ["rgba(0, 26, 61, 0.95)", "rgba(0, 26, 61, 0.95)"]
+    isHome ? ["rgba(0, 74, 176, 0)", "rgba(0, 74, 176, 0.95)"] : ["rgba(0, 74, 176, 0.95)", "rgba(0, 74, 176, 0.95)"]
   );
 
   const headerBorder = useTransform(
@@ -97,16 +97,7 @@ export function Navbar() {
                   activeProps={{ className: "opacity-100 underline decoration-2 underline-offset-8" }}
                 >
                   {link.name}
-                  {link.dropdown ? (
-                    <motion.span
-                      animate={{ rotate: activeDropdown === link.name ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <ArrowRight className="h-3.5 w-3.5 rotate-90 opacity-40" />
-                    </motion.span>
-                  ) : (
-                    <ArrowUpRight className="h-3.5 w-3.5 opacity-40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-                  )}
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
                 </Link>
 
                 {link.dropdown && (
@@ -143,17 +134,7 @@ export function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Link
-                to="/contact"
-                className="hidden items-center gap-2 rounded-xl bg-[#c0ff33] px-6 py-2.5 text-sm font-bold text-black transition-shadow hover:shadow-[0_0_20px_rgba(192,255,51,0.4)] sm:inline-flex"
-              >
-                Get Started <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
+
             <button 
               onClick={() => setIsOpen(!isOpen)}
               className="grid h-10 w-10 place-items-center rounded-full md:hidden"
@@ -219,13 +200,7 @@ export function Navbar() {
                 </div>
               ))}
               <hr className="border-white/5" />
-              <Link 
-                to="/contact" 
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-2xl bg-[#c0ff33] py-4 text-sm font-bold text-black"
-              >
-                Get Started <ArrowRight className="h-4 w-4" />
-              </Link>
+
             </nav>
           </motion.div>
         )}

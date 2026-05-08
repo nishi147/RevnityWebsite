@@ -42,91 +42,89 @@ export function CtaFooter() {
   };
 
   return (
-    <footer id="contact" className="relative bg-white">
+    <footer id="contact" className="relative bg-slate-50">
       {/* CTA Section */}
       <section className="relative mx-auto max-w-7xl px-6 py-16 sm:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-[3rem] bg-background px-8 py-12 text-center shadow-2xl md:px-16 md:py-16"
-        >
-          {/* Animated Background Orbs */}
-          <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-indigo-600/20 blur-[100px] animate-pulse" />
-          <div className="absolute -left-20 -bottom-20 h-96 w-96 rounded-full bg-[#c0ff33]/10 blur-[100px] animate-pulse" />
-          
-          <div className="relative z-10 flex flex-col items-center">
-            <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-xs font-bold uppercase tracking-[0.4em] text-white/50"
-            >
-              READY TO SCALE
-            </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left Column (Content) - Separate Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-10 md:p-16 flex flex-col justify-between bg-white rounded-[2rem] border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
+          >
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.4em] text-slate-500">
+                READY TO SCALE
+              </p>
+              
+              <h2 className="mt-6 text-5xl md:text-6xl font-black uppercase tracking-tighter text-slate-950 leading-none">
+                FUEL YOUR <br />
+                <span className="text-[#c0ff33]">GROWTH</span>
+              </h2>
+            </div>
+
+            <div className="mt-12 flex flex-wrap gap-4">
+              <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-bold text-white hover:bg-slate-800 transition-colors">
+                Contact Sales <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a href="tel:+13452876422" className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+                Call Us: +1 345 287 6422 <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column (Form) - Separate Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-[#0b1a3d] p-10 md:p-16 relative overflow-hidden rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
+          >
+            {/* Subtle grid pattern overlay */}
+            <div className="absolute inset-0 opacity-[0.05] [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="mt-6 text-5xl font-black uppercase tracking-tight text-white sm:text-8xl lg:text-9xl"
-            >
-              FUEL YOUR <br />
-              <span className="text-shimmer">GROWTH</span>
-            </motion.h2>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="mt-12 w-full max-w-xl"
-            >
-              <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input 
-                    type="text" 
-                    required
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full rounded-2xl bg-white/5 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-[#c0ff33] transition-all"
-                  />
-                  <input 
-                    type="email" 
-                    required
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full rounded-2xl bg-white/5 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-[#c0ff33] transition-all"
-                  />
-                </div>
-                <textarea 
+            <form onSubmit={handleSubmit} className="relative z-10 space-y-4 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input 
+                  type="text" 
                   required
-                  placeholder="Let me know your ICT"
-                  rows={4}
-                  value={formData.ict}
-                  onChange={(e) => setFormData({ ...formData, ict: e.target.value })}
-                  className="w-full rounded-2xl bg-white/5 border border-white/10 px-6 py-4 text-white focus:outline-none focus:border-[#c0ff33] transition-all"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full rounded-xl bg-white/5 border border-white/10 px-6 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#c0ff33] transition-all"
                 />
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={isSubmitting}
-                  type="submit"
-                  className="w-full rounded-2xl bg-[#c0ff33] py-4 text-slate-950 font-bold uppercase tracking-widest shadow-[0_0_30px_rgba(192,255,51,0.2)] hover:shadow-[0_0_50px_rgba(192,255,51,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Sending..." : "Fuel Your Growth"}
-                </motion.button>
-              </form>
-            </motion.div>
-          </div>
-
-          {/* Subtle grid pattern overlay */}
-          <div className="absolute inset-0 opacity-[0.05] [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
-        </motion.div>
+                <input 
+                  type="email" 
+                  required
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full rounded-xl bg-white/5 border border-white/10 px-6 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#c0ff33] transition-all"
+                />
+              </div>
+              <textarea 
+                required
+                placeholder="Let me know your ICT"
+                rows={3}
+                value={formData.ict}
+                onChange={(e) => setFormData({ ...formData, ict: e.target.value })}
+                className="w-full rounded-xl bg-white/5 border border-white/10 px-6 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#c0ff33] transition-all"
+              />
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+                type="submit"
+                className="w-full rounded-xl bg-[#c0ff33] py-4 text-slate-950 font-bold uppercase tracking-widest hover:bg-[#a8eb12] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Sending..." : "Fuel Your Growth"}
+              </motion.button>
+            </form>
+          </motion.div>
+        </div>
       </section>
 
       {/* Main Footer Section */}

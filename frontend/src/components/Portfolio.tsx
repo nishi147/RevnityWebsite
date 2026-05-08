@@ -51,7 +51,7 @@ export function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="relative py-24 px-6 sm:px-12 bg-white overflow-hidden">
+    <section id="portfolio" className="relative py-8 px-6 sm:px-12 bg-white overflow-hidden">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div 
@@ -79,7 +79,7 @@ export function Portfolio() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="mb-16 space-y-4">
+        <div className="mb-6 space-y-2">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -94,7 +94,7 @@ export function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-bold text-slate-950 leading-tight"
+            className="text-2xl md:text-4xl font-bold text-slate-950 leading-tight"
           >
             Industries and <span className="text-[#004ab0]">Specialties</span> <br />
             We Empower
@@ -102,7 +102,7 @@ export function Portfolio() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex overflow-x-auto gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 pb-4 snap-x snap-mandatory">
           {industryItems.map((item, index) => (
             <motion.div
               key={item.title}
@@ -111,24 +111,24 @@ export function Portfolio() {
               whileTap="active"
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ duration: 0.5 }}
               variants={cardVariants}
-              className="group relative p-8 rounded-[2rem] border border-slate-100 transition-all duration-300 hover:shadow-xl cursor-pointer"
+              className="group relative p-4 md:p-5 rounded-[1.5rem] border border-slate-100 transition-all duration-300 hover:shadow-xl cursor-pointer flex-shrink-0 w-[85vw] md:w-auto snap-center"
             >
               <div className="relative z-10">
                 <motion.div 
                   variants={iconVariants}
-                  className="flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm transition-all duration-500"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl shadow-sm transition-all duration-500"
                 >
-                  <item.icon className="h-7 w-7" />
+                  <item.icon className="h-5 w-5" />
                 </motion.div>
                 <motion.h3 
                   variants={titleVariants}
-                  className="mt-8 text-xl font-bold transition-colors duration-500"
+                  className="mt-4 text-lg font-bold transition-colors duration-500"
                 >
                   {item.title}
                 </motion.h3>
-                <p className="mt-4 text-sm leading-relaxed text-slate-500">
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
                   {item.desc}
                 </p>
               </div>

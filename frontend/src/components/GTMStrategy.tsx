@@ -20,14 +20,14 @@ const gtmItems = [
     icon: UserPlus,
     title: "Hyper-Accurate Profiling",
     desc: "Accurately map your TAM and refine your ICP to focus your resources on the most impactful accounts with human-verified precision.",
-    className: "md:col-span-7 lg:col-span-7",
+    className: "md:col-span-6 lg:col-span-6",
     gradient: "from-lime-500/10 to-transparent"
   },
   {
     icon: Calendar,
     title: "Renewal Intelligence",
     desc: "Gain crucial visibility into technology lifecycles. Track renewal dates to introduce your solution at the perfect evaluation window.",
-    className: "md:col-span-5 lg:col-span-5",
+    className: "md:col-span-6 lg:col-span-6",
     gradient: "from-[#004ab0]/10 to-transparent"
   },
   {
@@ -41,7 +41,7 @@ const gtmItems = [
 
 export function GTMStrategy() {
   return (
-    <section id="gtm" className="relative overflow-hidden bg-white py-24 sm:py-32">
+    <section id="gtm" className="relative overflow-hidden bg-white py-6 sm:py-8">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div 
@@ -68,48 +68,48 @@ export function GTMStrategy() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-20 max-w-4xl">
+        <div className="mb-6 max-w-4xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl font-bold leading-[1.1] text-slate-950 sm:text-6xl"
+            className="text-2xl font-bold leading-[1.1] text-slate-950 sm:text-4xl"
           >
             The Future of GTM Combining{" "}
             <span className="bg-[#c0ff33] px-2 text-[#004ab0]">AI Efficiency</span> and{" "}
             <span className="text-[#004ab0]">Human Accuracy</span>
           </motion.h2>
-          <p className="mt-6 text-lg text-slate-600 max-w-2xl">
+          <p className="mt-2 text-base text-slate-600 max-w-2xl">
             Precision-engineered data strategies for modern revenue teams looking to scale with certainty and speed.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+        <div className="flex overflow-x-auto gap-4 md:grid md:grid-cols-12 pb-4 snap-x snap-mandatory">
           {gtmItems.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ y: -8 }}
-              whileTap={{ scale: 0.98, y: -4 }}
-              className={`group relative overflow-hidden rounded-[2.5rem] bg-white p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-500 ${item.className}`}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.98, y: -2 }}
+              className={`group relative overflow-hidden rounded-[1.5rem] bg-white p-4 md:p-5 shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-500 ${item.className} flex-shrink-0 w-[85vw] md:w-auto snap-center`}
             >
               {/* Subtle Gradient Accent */}
               <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 transition-opacity group-hover:opacity-100`} />
               
               <div className="relative z-10">
-                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c0ff33] text-[#004ab0] shadow-[0_8px_20px_rgba(192,255,51,0.3)] transition-transform duration-500 group-hover:scale-110">
-                  <item.icon className="h-7 w-7" />
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#c0ff33] text-[#004ab0] shadow-[0_4px_10px_rgba(192,255,51,0.3)] transition-transform duration-500 group-hover:scale-110">
+                  <item.icon className="h-5 w-5" />
                 </div>
                 
-                <h3 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                <h3 className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
                   {item.title}
                 </h3>
                 
-                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {item.desc}
                 </p>
 

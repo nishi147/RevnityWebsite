@@ -27,9 +27,9 @@ function Index() {
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
       <Hero />
-      <Features />
-      <Awards />
       <GTMStrategy />
+      <Awards />
+      <Features />
       <Platform />
       <Portfolio />
       <MarketIntelligence />
