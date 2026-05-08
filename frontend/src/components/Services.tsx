@@ -59,46 +59,34 @@ export function Services() {
           {coreServices.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group"
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.98, y: -2 }}
+              className="group relative overflow-hidden rounded-[1.5rem] bg-[#004ab0] p-6 md:p-8 text-white border border-white/10 shadow-lg transition-all duration-500"
             >
-              <motion.div
-                animate={{
-                  y: -12,
-                }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                  ease: "easeInOut",
-                  delay: i * 0.3
-                }}
-                className="relative overflow-hidden rounded-[2.5rem] bg-[#004ab0] p-6 md:p-8 text-white border border-white/10 shadow-[10px_10px_0px_0px_#c0ff33] hover:shadow-[15px_15px_0px_0px_#c0ff33] transition-all duration-300"
-              >
-                <div className="relative z-10 flex flex-col h-full justify-between min-h-[140px]">
-                  <div>
-                    <h3 className="text-xl font-bold group-hover:text-[#c0ff33] transition-colors">{item.title}</h3>
-                    <p className="mt-3 text-xs leading-relaxed text-white/70">
-                      {item.desc}
-                    </p>
-                  </div>
-                  
-                  {/* Subtle arrow indicator */}
-                  <div className="mt-4 flex justify-end">
-                    <div className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#c0ff33] group-hover:text-black transition-all">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </div>
+              <div className="relative z-10 flex flex-col h-full justify-between min-h-[140px]">
+                <div>
+                  <h3 className="text-xl font-bold group-hover:text-[#c0ff33] transition-colors">{item.title}</h3>
+                  <p className="mt-3 text-xs leading-relaxed text-white/70">
+                    {item.desc}
+                  </p>
+                </div>
+                
+                {/* Subtle arrow indicator */}
+                <div className="mt-4 flex justify-end">
+                  <div className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#c0ff33] group-hover:text-black transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                   </div>
                 </div>
+              </div>
 
-                {/* Decorative background glow */}
-                <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-white/5 blur-2xl transition-all group-hover:bg-white/10" />
-              </motion.div>
+              {/* Decorative background glow */}
+              <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-white/5 blur-2xl transition-opacity group-hover:opacity-40" />
             </motion.div>
           ))}
         </div>

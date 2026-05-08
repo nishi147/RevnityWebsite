@@ -95,7 +95,7 @@ export function GTMStrategy() {
               transition={{ duration: 0.6 }}
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98, y: -2 }}
-              className={`group relative overflow-hidden rounded-[1.5rem] bg-white p-4 md:p-5 shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-500 ${item.className}`}
+              className={`group relative overflow-hidden rounded-[1.5rem] bg-[#004ab0] p-4 md:p-5 shadow-lg border border-white/10 transition-all duration-500 ${item.className}`}
             >
               {/* Subtle Gradient Accent */}
               <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 transition-opacity group-hover:opacity-100`} />
@@ -105,18 +105,18 @@ export function GTMStrategy() {
                   <item.icon className="h-5 w-5" />
                 </div>
                 
-                <h3 className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
+                <h3 className="text-lg font-bold tracking-tight text-white sm:text-xl group-hover:text-[#c0ff33] transition-colors">
                   {item.title}
                 </h3>
                 
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
                   {item.desc}
                 </p>
 
               </div>
 
               {/* Decorative corner accent */}
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#c0ff33]/10 blur-2xl transition-opacity group-hover:opacity-40" />
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/5 blur-2xl transition-opacity group-hover:opacity-40" />
             </motion.div>
           ))}
         </div>
