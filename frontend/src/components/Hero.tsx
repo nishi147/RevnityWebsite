@@ -77,6 +77,7 @@ export function Hero() {
                     key={charIndex}
                     variants={letterVariants}
                     className={`inline-block ${wordIndex === 1 || wordIndex === 2 ? "text-shimmer" : ""}`}
+                    style={{ paddingRight: (wordIndex === 1 || wordIndex === 2) ? "0.05em" : "0" }}
                   >
                     {char}
                   </motion.span>

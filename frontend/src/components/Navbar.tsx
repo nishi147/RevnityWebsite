@@ -6,9 +6,26 @@ import logoImg from "@/assets/Revnity Marketing.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const isHome = location.pathname === "/";
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   // Scroll-based transforms for the Home page
   const headerBg = useTransform(
@@ -67,9 +84,9 @@ export function Navbar() {
           borderBottomColor: headerBorder,
           color: textColor 
         }}
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className="fixed inset-x-0 top-0 z-50 py-4 transition-all duration-300 border-b"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-12">
