@@ -58,7 +58,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             style={{ fontFamily: "'Outfit', sans-serif" }}
-            className="text-base sm:text-xl md:text-2xl font-bold text-white uppercase tracking-wider opacity-80"
+            className="text-sm sm:text-lg md:text-xl font-bold text-white uppercase tracking-wider opacity-80"
           >
             Scale Your Go-To-Market Strategy with
           </motion.p>
