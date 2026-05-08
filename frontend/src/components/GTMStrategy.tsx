@@ -92,13 +92,20 @@ export function GTMStrategy() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -4 }}
-              whileTap={{ scale: 0.98, y: -2 }}
-              className={`group relative overflow-hidden rounded-[1.5rem] bg-[#004ab0] p-4 md:p-5 shadow-lg border border-white/10 transition-all duration-500 ${item.className}`}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ 
+                y: -8,
+                scale: 1.02,
+                boxShadow: "0 20px 25px -5px rgba(0, 74, 176, 0.25)"
+              }}
+              whileTap={{ scale: 0.98 }}
+              className={`group relative overflow-hidden rounded-[1.5rem] bg-[#004ab0] p-4 md:p-5 border border-white/10 transition-all duration-500 ${item.className}`}
             >
               {/* Subtle Gradient Accent */}
               <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 transition-opacity group-hover:opacity-100`} />
+              
+              {/* Shine sweep effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
               
               <div className="relative z-10">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#c0ff33] text-[#004ab0] shadow-[0_4px_10px_rgba(192,255,51,0.3)] transition-transform duration-500 group-hover:scale-110">
