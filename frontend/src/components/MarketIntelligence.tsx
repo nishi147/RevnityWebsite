@@ -112,7 +112,7 @@ export function MarketIntelligence() {
             <div className="border-b border-white/10 md:hidden" />
           </div>
 
-          <div className="flex overflow-x-auto md:grid md:grid-cols-3 relative z-10 pb-4 snap-x snap-mandatory">
+          <div className="grid grid-cols-1 md:grid-cols-3 relative z-10">
             {intelligenceItems.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -120,7 +120,7 @@ export function MarketIntelligence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="p-4 md:p-6 hover:bg-white/5 transition-colors group border-b md:border-b-0 last:border-b-0 border-white/10 flex-shrink-0 w-[85vw] md:w-auto snap-center"
+                className="p-4 md:p-6 hover:bg-white/5 transition-colors group border-b md:border-b-0 last:border-b-0 border-white/10"
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[#c0ff33] group-hover:text-black group-hover:shadow-[0_0_20px_rgba(192,255,51,0.4)]">

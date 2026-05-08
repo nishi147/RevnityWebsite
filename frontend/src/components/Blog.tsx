@@ -142,7 +142,7 @@ export function Blog() {
           )}
 
           {/* Side List */}
-          <div className="lg:col-span-5 flex overflow-x-auto lg:flex-col gap-4 pb-4 snap-x snap-mandatory">
+          <div className="lg:col-span-5 flex flex-col gap-4">
             {posts.map((p, i) => (
               <motion.div
                 key={p.id}
@@ -150,7 +150,6 @@ export function Blog() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="flex-shrink-0 w-[85vw] lg:w-auto snap-center"
               >
                 <Link to="/blog/$slug" params={{ slug: p.slug }} className="group block h-full">
                   <article className="flex flex-col sm:flex-row gap-4 p-3 rounded-xl bg-slate-50/50 hover:bg-white border border-slate-100 hover:border-[#004ab0]/20 hover:shadow-2xl transition-all duration-500 h-full relative overflow-hidden">

@@ -85,7 +85,7 @@ export function GTMStrategy() {
           </p>
         </div>
 
-        <div className="flex overflow-x-auto gap-4 md:grid md:grid-cols-12 pb-4 snap-x snap-mandatory">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
           {gtmItems.map((item, i) => (
             <motion.div
               key={item.title}
@@ -95,7 +95,7 @@ export function GTMStrategy() {
               transition={{ duration: 0.6 }}
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98, y: -2 }}
-              className={`group relative overflow-hidden rounded-[1.5rem] bg-white p-4 md:p-5 shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-500 ${item.className} flex-shrink-0 w-[85vw] md:w-auto snap-center`}
+              className={`group relative overflow-hidden rounded-[1.5rem] bg-white p-4 md:p-5 shadow-[0_10px_25px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-500 ${item.className}`}
             >
               {/* Subtle Gradient Accent */}
               <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 transition-opacity group-hover:opacity-100`} />

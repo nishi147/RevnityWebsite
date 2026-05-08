@@ -40,7 +40,7 @@ export function Hero() {
   };
 
   return (
-    <section id="home" className="relative h-[100dvh] w-full overflow-hidden flex items-center justify-center pt-20 pb-4 sm:pt-24">
+    <section id="home" className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-32 pb-20 sm:pt-24">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -58,7 +58,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             style={{ fontFamily: "'Outfit', sans-serif" }}
-            className="text-sm sm:text-lg md:text-xl font-bold text-white uppercase tracking-wider opacity-80"
+            className="text-lg sm:text-2xl md:text-4xl font-bold text-white uppercase tracking-wider opacity-80"
           >
             Scale Your Go-To-Market Strategy with
           </motion.p>
@@ -68,7 +68,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             style={{ fontFamily: "'Outfit', sans-serif" }}
-            className="mt-4 font-black uppercase leading-[0.95] tracking-tighter text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl"
+            className="mt-4 font-black uppercase leading-[0.95] tracking-tighter text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
             {headline.split(" ").map((word, wordIndex) => (
               <span key={wordIndex} className="inline-block sm:whitespace-nowrap mr-[0.3em] last:mr-0">
@@ -89,7 +89,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.7 }}
-            className="mt-4 sm:mt-12 flex flex-wrap items-center gap-4 sm:gap-8"
+            className="mt-10 sm:mt-12 flex flex-wrap items-center gap-4 sm:gap-8"
           >
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -111,14 +111,14 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="mt-4 sm:mt-12 max-w-3xl text-xs sm:text-base font-medium leading-relaxed text-white/90"
+            className="mt-10 sm:mt-12 max-w-3xl text-sm sm:text-base font-medium leading-relaxed text-white/90"
           >
             Target high-fit accounts and uncover competitor displacement opportunities with verified intelligence across 35,000+ global vendors. Scale your GTM efficiency and define your market using actionable, data-driven technographic insights.
           </motion.p>
         </div>
 
         {/* Globe Section */}
-        <div className="flex justify-center items-center order-2 w-full h-[150px] sm:h-[450px] lg:h-auto lg:aspect-square">
+        <div className="flex justify-center items-center order-2 w-full h-[300px] sm:h-[450px] lg:h-auto lg:aspect-square">
           <Globe />
         </div>
       </div>

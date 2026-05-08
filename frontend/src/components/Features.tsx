@@ -112,7 +112,7 @@ export function Features() {
           </p>
         </div>
 
-        <div className="flex overflow-x-auto gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 pb-4 snap-x snap-mandatory">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
@@ -123,7 +123,7 @@ export function Features() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7 }}
               variants={cardVariants}
-              className="group relative overflow-hidden rounded-[1.5rem] p-4 md:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer flex-shrink-0 w-[85vw] md:w-auto snap-center"
+              className="group relative overflow-hidden rounded-[1.5rem] p-4 md:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] transition-all duration-500 cursor-pointer"
             >
               {/* Individual Card Background Glow */}
               <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#c0ff33]/0 blur-3xl group-hover:bg-[#c0ff33]/10 transition-all duration-500" />

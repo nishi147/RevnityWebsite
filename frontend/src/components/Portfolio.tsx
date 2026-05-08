@@ -102,7 +102,7 @@ export function Portfolio() {
         </div>
 
         {/* Grid */}
-        <div className="flex overflow-x-auto gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 pb-4 snap-x snap-mandatory">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {industryItems.map((item, index) => (
             <motion.div
               key={item.title}
@@ -113,7 +113,7 @@ export function Portfolio() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
               variants={cardVariants}
-              className="group relative p-4 md:p-5 rounded-[1.5rem] border border-slate-100 transition-all duration-300 hover:shadow-xl cursor-pointer flex-shrink-0 w-[85vw] md:w-auto snap-center"
+              className="group relative p-4 md:p-5 rounded-[1.5rem] border border-slate-100 transition-all duration-300 hover:shadow-xl cursor-pointer"
             >
               <div className="relative z-10">
                 <motion.div 
