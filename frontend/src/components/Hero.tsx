@@ -58,7 +58,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             style={{ fontFamily: "'Outfit', sans-serif" }}
-            className="text-lg sm:text-2xl md:text-4xl font-bold text-white uppercase tracking-wider opacity-80"
+            className="text-base sm:text-xl md:text-2xl font-bold text-white uppercase tracking-wider opacity-80"
           >
             Scale Your Go-To-Market Strategy with
           </motion.p>
@@ -68,7 +68,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             style={{ fontFamily: "'Outfit', sans-serif" }}
-            className="mt-4 font-black uppercase leading-[0.95] tracking-tighter text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mt-4 font-black uppercase leading-[0.95] tracking-tighter text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl"
           >
             {headline.split(" ").map((word, wordIndex) => (
               <span key={wordIndex} className="inline-block sm:whitespace-nowrap mr-[0.3em] last:mr-0">
