@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from "framer-motion"
 import { Shield, Target, Rocket, Eye, Database, Users, Globe, Building2 } from "lucide-react"
+import { Navbar } from "@/components/Navbar"
+import { CtaFooter } from "@/components/CtaFooter"
 
 export const Route = createFileRoute('/about')({
   component: AboutPage,
@@ -39,19 +41,28 @@ function AboutPage() {
   ]
 
   return (
-    <div className="bg-white">
+    <main className="min-h-screen bg-[#f8faff] text-slate-900 font-sans">
+      <Navbar />
+
       {/* Hero Section */}
-      <section className="relative pt-24 pb-12 px-6 sm:px-12 overflow-hidden bg-background">
+      <section className="relative pt-32 pb-20 px-6 sm:px-12 overflow-hidden bg-gradient-to-br from-[#f0f4f8] to-white">
+        {/* Grid Pattern Simulation */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
+        
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl"
           >
-            <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-8">
-              About <span className="text-[#c0ff33]">Revnity</span>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#c0ff33]/10 px-4 py-1.5 text-sm font-semibold text-[#004ab0] mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#c0ff33]"></span>
+              ABOUT US
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-[#0f172a] mb-6 leading-tight">
+              About <span className="text-[#004ab0]">Revnity</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/80 leading-relaxed">
+            <p className="text-xl text-slate-600 leading-relaxed max-w-3xl">
               Revnity Marketing helps Technology and B2B companies cut through the noise with precise audience targeting, TAM insights, and intelligent data solutions. Whether you need Technographics, Channel Targeting, or Data Enrichment, we’ve got you covered—across Software, Hardware, Cloud, and beyond.
             </p>
           </motion.div>
@@ -59,14 +70,17 @@ function AboutPage() {
       </section>
 
       {/* What We Do */}
-      <section className="py-24 px-6 bg-slate-50">
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl font-black uppercase tracking-tighter mb-6 text-slate-950">
-                What We <span className="text-[#004ab0]">Do</span>
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#c0ff33]/10 px-4 py-1.5 text-sm font-semibold text-[#004ab0] mb-4">
+                OUR MISSION
+              </div>
+              <h2 className="text-4xl font-bold text-[#0f172a] mb-6">
+                What We Do
               </h2>
-              <p className="text-xl text-slate-600 leading-relaxed mb-12">
+              <p className="text-lg text-slate-600 leading-relaxed mb-12">
                 Delivering tailored insights on technology adoption, market trends, and target audience profiling to fuel business expansion.
               </p>
               <div className="grid sm:grid-cols-2 gap-8">
@@ -77,18 +91,18 @@ function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="p-6 rounded-3xl bg-white shadow-xl border border-slate-100"
+                    className="p-6 rounded-2xl bg-[#f8faff] border border-slate-100 shadow-sm"
                   >
                     <f.icon className="h-10 w-10 text-[#004ab0] mb-4" />
-                    <h3 className="text-lg font-bold mb-2">{f.title}</h3>
+                    <h3 className="text-lg font-bold text-[#0f172a] mb-2">{f.title}</h3>
                     <p className="text-sm text-slate-500">{f.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-[3rem] bg-[#004ab0] p-12 text-white flex flex-col justify-center">
-                <h3 className="text-3xl font-black uppercase mb-6">Our Goal</h3>
+              <div className="aspect-square rounded-3xl bg-[#004ab0] p-12 text-white flex flex-col justify-center shadow-xl">
+                <h3 className="text-3xl font-bold mb-6">Our Goal</h3>
                 <p className="text-lg text-white/80 leading-relaxed">
                   We revolutionize how technology and B2B enterprises position their offerings by providing unparalleled data intelligence, advanced market analytics, and precise customer insights—fueling sustained growth and competitive advantage.
                 </p>
@@ -96,10 +110,10 @@ function AboutPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#c0ff33] rounded-[2rem] p-8 text-black flex flex-col justify-center shadow-2xl"
+                className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#c0ff33] rounded-2xl p-8 text-slate-900 flex flex-col justify-center shadow-xl border border-[#c0ff33]"
               >
-                <h3 className="text-xl font-black uppercase mb-4">Our Vision</h3>
-                <p className="text-sm font-bold leading-tight">
+                <h3 className="text-xl font-bold mb-4">Our Vision</h3>
+                <p className="text-sm font-semibold leading-tight text-slate-700">
                   To shape the future of B2B marketing by equipping technology companies with state-of-the-art data intelligence.
                 </p>
               </motion.div>
@@ -109,11 +123,16 @@ function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 px-6 bg-background text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
+      <section className="py-24 px-6 bg-[#f8faff] relative overflow-hidden">
+        {/* Grid Pattern Simulation */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
+        
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-16">
-            What We <span className="text-[#c0ff33]">Have</span>
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#c0ff33]/10 px-4 py-1.5 text-sm font-semibold text-[#004ab0] mb-4">
+            OUR SCALE
+          </div>
+          <h2 className="text-4xl font-bold text-[#0f172a] mb-16">
+            What We Have
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
             {stats.map((s, i) => (
@@ -125,21 +144,23 @@ function AboutPage() {
                 transition={{ delay: i * 0.1 }}
                 className="flex flex-col items-center"
               >
-                <div className="h-16 w-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/20">
-                  <s.icon className="h-8 w-8 text-[#c0ff33]" />
+                <div className="h-16 w-16 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm border border-slate-100">
+                  <s.icon className="h-8 w-8 text-[#004ab0]" />
                 </div>
-                <div className="text-4xl font-black text-white mb-2">{s.value}</div>
-                <div className="text-xs uppercase tracking-widest text-white/50 font-bold max-w-[120px] mx-auto leading-relaxed">
+                <div className="text-4xl font-bold text-[#0f172a] mb-2">{s.value}</div>
+                <div className="text-xs uppercase tracking-widest text-slate-500 font-bold max-w-[120px] mx-auto leading-relaxed">
                   {s.label}
                 </div>
               </motion.div>
             ))}
           </div>
-          <p className="mt-20 text-white/60 max-w-3xl mx-auto italic">
+          <p className="mt-20 text-slate-500 max-w-3xl mx-auto italic text-sm">
             Specialists in transforming digital identities. Empowered by AI, ML, NLP, and data mining, we extract intelligence from billions of public assets, leveraging webhooks and big data analytics to deliver real-time, precise technology stack insights and B2B intelligence.
           </p>
         </div>
       </section>
-    </div>
+
+      <CtaFooter />
+    </main>
   )
 }

@@ -161,6 +161,9 @@ export function Globe({
 
     let yaw = 0, pitch = -0.30;
     let raf = 0, lastT = performance.now();
+    let isDragging = false;
+    let previousMouseX = 0;
+    let previousMouseY = 0;
 
     function resize() {
       if (!canvas) return;
@@ -174,6 +177,62 @@ export function Globe({
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
+    const onMouseDown = (e: MouseEvent) => {
+      isDragging = true;
+      previousMouseX = e.clientX;
+      previousMouseY = e.clientY;
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - previousMouseX;
+      const deltaY = e.clientY - previousMouseY;
+      
+      yaw += deltaX * 0.005;
+      pitch -= deltaY * 0.005;
+      pitch = Math.max(-1.5, Math.min(1.5, pitch));
+
+      previousMouseX = e.clientX;
+      previousMouseY = e.clientY;
+    };
+
+    const onMouseUp = () => {
+      isDragging = false;
+    };
+
+    canvas.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        isDragging = true;
+        previousMouseX = e.touches[0].clientX;
+        previousMouseY = e.touches[0].clientY;
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDragging || e.touches.length === 0) return;
+      const deltaX = e.touches[0].clientX - previousMouseX;
+      const deltaY = e.touches[0].clientY - previousMouseY;
+      
+      yaw += deltaX * 0.005;
+      pitch -= deltaY * 0.005;
+      pitch = Math.max(-1.5, Math.min(1.5, pitch));
+
+      previousMouseX = e.touches[0].clientX;
+      previousMouseY = e.touches[0].clientY;
+    };
+
+    const onTouchEnd = () => {
+      isDragging = false;
+    };
+
+    canvas.addEventListener('touchstart', onTouchStart);
+    window.addEventListener('touchmove', onTouchMove);
+    window.addEventListener('touchend', onTouchEnd);
+
     function draw(t: number) {
       if (!canvas || !ctx) return;
       const dt = Math.min(0.05, (t - lastT) / 1000);
@@ -182,7 +241,10 @@ export function Globe({
       const dist = Math.min(180, Math.abs(((facingLon+10+540)%360)-180));
       const inRich = dist < 110;
       const speedFactor = inRich ? 0.35 + 0.65 * (dist/110) : 1.4;
-      yaw += spinSpeed * dt * speedFactor;
+      
+      if (!isDragging) {
+        yaw += spinSpeed * dt * speedFactor;
+      }
 
       const r = canvas.getBoundingClientRect();
       const cx = r.width/2, cy = r.height/2;
@@ -339,7 +401,16 @@ export function Globe({
     }
     raf = requestAnimationFrame(draw);
 
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+    return () => { 
+      cancelAnimationFrame(raf); 
+      ro.disconnect(); 
+      canvas.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+      canvas.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+    };
   }, [accent, mesh, spinSpeed, routeCount, labels, meshOpacity, arcOpacity]);
 
   return (
