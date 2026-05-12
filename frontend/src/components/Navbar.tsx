@@ -54,14 +54,14 @@ export function Navbar() {
     <>
       <motion.header
         style={{ 
-          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.95)" : (isHome || location.pathname.startsWith("/services")) ? "transparent" : "rgba(0, 74, 176, 0.95)",
-          borderBottomColor: isScrolled ? "rgba(0, 0, 0, 0.05)" : (isHome || location.pathname.startsWith("/services")) ? "transparent" : "rgba(255, 255, 255, 0.1)",
-          color: isScrolled ? "#0f172a" : (location.pathname === "/about" || location.pathname === "/blog" || location.pathname === "/why-revnity" || location.pathname === "/data-collection-methodology" || location.pathname === "/services" || location.pathname === "/services/technographic-intelligence" || location.pathname === "/services/title-based-database" || location.pathname === "/services/channel-partner-insights" || location.pathname === "/services/stack-data-append" || location.pathname === "/services/data-appending-and-discovery" || location.pathname === "/services/industry-database") ? "#0f172a" : "#ffffff" 
+          backgroundColor: isHome ? "transparent" : "rgba(0, 74, 176, 0.95)",
+          borderBottomColor: isHome ? "transparent" : "rgba(255, 255, 255, 0.1)",
+          color: "#ffffff" 
         }}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`${isScrolled ? "fixed shadow-sm backdrop-blur-md" : "absolute"} inset-x-0 top-0 z-50 py-4 transition-all duration-300 border-b`}
+        className="absolute inset-x-0 top-0 z-50 py-4 transition-all duration-300 border-b"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-12">
           {/* Logo */}
