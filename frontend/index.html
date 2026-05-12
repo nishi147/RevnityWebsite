@@ -17,6 +17,15 @@
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:title" content="Revnity | Data-Driven Marketing Intelligence" />
     <meta name="twitter:description" content="Power up your marketing edge with precision-driven B2B intelligence and scalable data solutions." />
+    <script>
+      (function() {
+        const path = window.location.pathname;
+        if (path.startsWith('/services')) {
+          document.documentElement.style.setProperty('--background', '#f8faff');
+          document.documentElement.style.setProperty('--foreground', '#0f172a');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
